@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38BBA8D11B4D6FDC00BD00C8 /* libPods-AnimatedValidatorTests-NSString-Email.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38BBA8D01B4D6FDC00BD00C8 /* libPods-AnimatedValidatorTests-NSString-Email.a */; };
+		38BBA8D41B4D71BC00BD00C8 /* NSString+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = 38BBA8D31B4D71BC00BD00C8 /* NSString+Email.m */; };
 		446B443B1964AADC00047086 /* ValidatorViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 446B443A1964AADC00047086 /* ValidatorViewControllerSpec.m */; };
 		44CD1C0619215BE700140BD0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44CD1C0519215BE700140BD0 /* Foundation.framework */; };
 		44CD1C0819215BE700140BD0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44CD1C0719215BE700140BD0 /* CoreGraphics.framework */; };
@@ -36,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		38BBA8D01B4D6FDC00BD00C8 /* libPods-AnimatedValidatorTests-NSString-Email.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AnimatedValidatorTests-NSString-Email.a"; path = "Pods/../build/Debug-iphoneos/libPods-AnimatedValidatorTests-NSString-Email.a"; sourceTree = "<group>"; };
+		38BBA8D21B4D71BC00BD00C8 /* NSString+Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Email.h"; sourceTree = "<group>"; };
+		38BBA8D31B4D71BC00BD00C8 /* NSString+Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Email.m"; sourceTree = "<group>"; };
 		446B443A1964AADC00047086 /* ValidatorViewControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidatorViewControllerSpec.m; sourceTree = "<group>"; };
 		44CD1C0219215BE700140BD0 /* AnimatedValidator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatedValidator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44CD1C0519215BE700140BD0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -67,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38BBA8D11B4D6FDC00BD00C8 /* libPods-AnimatedValidatorTests-NSString-Email.a in Frameworks */,
 				44CD1C0819215BE700140BD0 /* CoreGraphics.framework in Frameworks */,
 				44CD1C0A19215BE700140BD0 /* UIKit.framework in Frameworks */,
 				44CD1C0619215BE700140BD0 /* Foundation.framework in Frameworks */,
@@ -110,6 +116,7 @@
 		44CD1C0419215BE700140BD0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				38BBA8D01B4D6FDC00BD00C8 /* libPods-AnimatedValidatorTests-NSString-Email.a */,
 				44CD1C0519215BE700140BD0 /* Foundation.framework */,
 				44CD1C0719215BE700140BD0 /* CoreGraphics.framework */,
 				44CD1C0919215BE700140BD0 /* UIKit.framework */,
@@ -128,6 +135,8 @@
 				44CD1C1519215BE800140BD0 /* AppDelegate.m */,
 				44CD1C1719215BE800140BD0 /* Main.storyboard */,
 				44CD1C1D19215BE800140BD0 /* Images.xcassets */,
+				38BBA8D21B4D71BC00BD00C8 /* NSString+Email.h */,
+				38BBA8D31B4D71BC00BD00C8 /* NSString+Email.m */,
 				44CD1C0C19215BE800140BD0 /* Supporting Files */,
 				44CD1C3D19215E3B00140BD0 /* Constants.h */,
 				44CD1C3E19215E3B00140BD0 /* Constants.m */,
@@ -308,6 +317,7 @@
 				44CD1C1619215BE800140BD0 /* AppDelegate.m in Sources */,
 				44CD1C3C19215D0A00140BD0 /* ValidatorViewController.m in Sources */,
 				44CD1C1219215BE800140BD0 /* main.m in Sources */,
+				38BBA8D41B4D71BC00BD00C8 /* NSString+Email.m in Sources */,
 				44CD1C3F19215E3B00140BD0 /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,6 +446,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AnimatedValidator/AnimatedValidator-Prefix.pch";
 				INFOPLIST_FILE = "AnimatedValidator/AnimatedValidator-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -449,6 +463,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AnimatedValidator/AnimatedValidator-Prefix.pch";
 				INFOPLIST_FILE = "AnimatedValidator/AnimatedValidator-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
