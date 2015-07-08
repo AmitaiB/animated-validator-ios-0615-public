@@ -1,4 +1,3 @@
-//
 //  ValidatorViewController.m
 //  AnimatedValidator
 //
@@ -62,6 +61,15 @@
 }
 
 -(void)errorPulseFieldAnimation {
+    CABasicAnimation *errorPulse;
+    
+    errorPulse = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    errorPulse.duration = .25;
+    errorPulse.repeatCount = HUGE_VALF;
+    errorPulse.autoreverses = YES;
+    errorPulse.fromValue = [NSNumber numberWithFloat:1.0];
+    errorPulse.toValue = [NSNumber numberWithFloat:0.0];
+    [self.view.layer addAnimation:errorPulse forKey:@"animateOpacity"];  
     
 }
 
