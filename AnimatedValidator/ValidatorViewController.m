@@ -64,75 +64,28 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
         ///one field at a time. if valid, unlock the next field. if tries to leave behind invalid input, pulse red (and prevent). if all are valid, cue the Submit button.
     
-
-        ///These two lines get us our textField as a primitive...
-    NSArray *signupTextFieldsArray = @[self.emailTextField,
-                                       self.emailConfirmTextField,
-                                       self.passwordConfirmTextField,
-                                       self.passwordTextField,
-                                       self.passwordConfirmTextField];
-    NSUInteger currentTextField = [signupTextFieldsArray indexOfObjectIdenticalTo:textField];
-
-    BOOL isValidInput = [self isValidInput:textField];
-    BOOL isNotValidInput = !isValidInput;
     
-        ///...which can then be used with this macro for...
-    typedef NS_ENUM(NSInteger, signupTextFields) {
-        emailTextField,
-        emailConfirmTextField,
-        phoneTextField,
-        passwordTextField,
-        passwordConfirmTextField
-    };
-    
-        ///...a plain-English switch-case.
-    if (isValidInput) {
-        switch (currentTextField) {
-            case emailTextField:
-                <#statements#>
-                break;
-            case emailConfirmTextField:
-                <#statements#>
-                break;
-            case phoneTextField:
-                <#statements#>
-                break;
-            case passwordTextField:
-                <#statements#>
-                break;
-            case passwordConfirmTextField:
-                <#statements#>
-                break;
-                
-            default:
-                break;
+    if ([self isValidInput:textField]) {
+        if ([textField isEqual:self.emailTextField]) {
+            [self.emailConfirmTextField setEnabled:YES];
+            [self.emailConfirmTextField becomeFirstResponder];
+        }
+        if ([textField isEqual:self.emailConfirmTextField]) {
+            [self.phoneTextField becomeFirstResponder];
+            }
+        if ([textField isEqual:self.phoneTextField]) {
+            [self.passwordTextField becomeFirstResponder];
+        }
+        if ([textField isEqual:self.passwordTextField]) {
+            [self.passwordConfirmTextField setEnabled:YES];
+            [self.passwordConfirmTextField becomeFirstResponder];
+        }
+        if ([textField isEqual:self.passwordConfirmTextField]) {
+            
         }
     }
     
-    else if (isNotValidInput) {
-        switch (currentTextField) {
-            case <#constant#>:
-                <#statements#>
-                break;
-            case <#constant#>:
-                <#statements#>
-                break;
-            case <#constant#>:
-                <#statements#>
-                break;
-            case <#constant#>:
-                <#statements#>
-                break;
-            case <#constant#>:
-                <#statements#>
-                break;
-                
-            default:
-                break;
-        }
-    }
-    
-
+    return YES;
 }
 
 @end
