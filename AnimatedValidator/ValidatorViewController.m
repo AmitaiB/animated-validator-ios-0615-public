@@ -33,10 +33,19 @@
     self.phoneTextField.accessibilityLabel = PHONETEXTFIELD;
     self.passwordTextField.accessibilityLabel = PASSWORDTEXTFIELD;
     self.passwordConfirmTextField.accessibilityLabel = PASSWORDCONFIRMTEXTFIELD;
-    
+        ///Submit button appears when all are valid entries.
     self.submitButton.hidden = YES;
     
 }
 
+
+-(void)assignDelegates {
+    self.emailTextField.delegate = self;
+    self.emailConfirmTextField.delegate = self;
+    self.phoneTextField.delegate = self;
+    self.passwordTextField.delegate = self;
+    self.passwordConfirmTextField.delegate = self;
+    
+}
 
 @end

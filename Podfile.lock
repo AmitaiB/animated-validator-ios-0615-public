@@ -3,6 +3,7 @@ PODS:
   - KIF (3.0.8):
     - KIF/XCTest (= 3.0.8)
   - KIF/XCTest (3.0.8)
+  - NSString-Email (0.0.3)
   - OCHamcrest (4.0.1)
   - OCMockito (1.3.1):
     - OCHamcrest (~> 4.0)
@@ -11,6 +12,7 @@ PODS:
 DEPENDENCIES:
   - Expecta (~> 0.2.4)
   - KIF (~> 3.0)
+  - NSString-Email (~> 0.0.2)
   - OCMockito (~> 1.0)
   - Specta (from `https://github.com/specta/specta.git`)
 
@@ -26,6 +28,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Expecta: cfaf1d3e2e194ca704a25e997093d30a1ce70b61
   KIF: 3c2cb8e66fb216f9c3abcd714699411f0256f767
+  NSString-Email: 3c1ff0ace64d7ecc289ea2a5696170c853012252
   OCHamcrest: a62dbcf4dec9cbf091263d936e0de8dec02baac0
   OCMockito: 958f33ee8ad03eeb62e1397ef6b60f5121214ca4
   Specta: 9cec98310dca411f7c7ffd6943552b501622abfe
