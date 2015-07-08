@@ -26,6 +26,7 @@
 @property (nonatomic, weak) IBOutlet UITextField *passwordTextField;
 @property (nonatomic, weak) IBOutlet UITextField *passwordConfirmTextField;
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
+- (IBAction)submitButtonTapped:(id)sender;
 
 @end
 
@@ -77,12 +78,16 @@
     should be the same as Password
     */
         //#1 good. #2 good. #3 good. #4 good. #5 good.
+    if ([textField.text length] < 1) {
+        return NO;
+    }
+    
     if ([textField isEqual:self.emailTextField]) {
         return [self.emailTextField.text isEmail];
     }
     
     if ([textField isEqual:self.emailConfirmTextField]) {
-        BOOL isTheSameEmail = [self.emailConfirmTextField.text isEqualToString:self.emailTextField.text];
+        BOOL isTheSameEmail = [[self.emailConfirmTextField.text lowercaseString] isEqualToString:[self.emailTextField.text lowercaseString]];
         return isTheSameEmail;
     }
     
@@ -119,15 +124,42 @@
     return YES;
 }
 
+-(BOOL)allFieldsValid {
+    return (   [self isValidInput:self.emailTextField] 
+            && [self isValidInput:self.emailConfirmTextField]
+            && [self isValidInput:self.phoneTextField]
+            && [self isValidInput:self.passwordTextField]
+            && [self isValidInput:self.passwordConfirmTextField]
+            );
+}
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
 }
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField {
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+    if ([textField isEqual:self.phoneTextField]) {
+            //good things happen
+    } else {
+            //get angry
+    }
+    
+    if ([self allFieldsValid]) {
+        [self.submitButton setHidden:NO];
+        [self.submitButton setEnabled:YES];
+    }
+}
+
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField 
+{
         ///one field at a time. if valid, unlock the next field. if tries to leave behind invalid input, pulse red (and prevent). if all are valid, cue the Submit button.
     
     
     if ([self isValidInput:textField]) {
+        
+        NSLog(@"%@ is valid!", textField.text);
+        
         if ([textField isEqual:self.emailTextField]) {
             [self.emailConfirmTextField setEnabled:YES];
             [self.emailConfirmTextField becomeFirstResponder];
@@ -146,8 +178,10 @@
             
         }
     }
-    
     return YES;
 }
 
+- (IBAction)submitButtonTapped:(id)sender {
+    NSLog(@"Submit button tapped!");
+}
 @end
