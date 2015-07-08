@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 al-tyus.com. All rights reserved.
 //
 
+    //#import <QuartzCore/QuartzCore.h>
 #import "ValidatorViewController.h"
 #import "Constants.h"
 
@@ -138,27 +139,17 @@
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {
-    if ([textField isEqual:self.phoneTextField]) {
-            //good things happen
-    } else {
-            //get angry
-    }
-    
-    if ([self allFieldsValid]) {
-        [self.submitButton setHidden:NO];
-        [self.submitButton setEnabled:YES];
-    }
-}
-
-
--(BOOL)textFieldShouldReturn:(UITextField *)textField 
-{
-        ///one field at a time. if valid, unlock the next field. if tries to leave behind invalid input, pulse red (and prevent). if all are valid, cue the Submit button.
-    
-    
+//    if ([textField isEqual:self.phoneTextField]) {
+//            //good things happen
+//        if ([self isValidInput:textField]) {
+//            NSLog(@"%@ is valid!", textField.accessibilityLabel);
+//        }
+//    } else {
+//            //get angry
+//    }
     if ([self isValidInput:textField]) {
         
-        NSLog(@"%@ is valid!", textField.text);
+        NSLog(@"%@ is valid!", textField.accessibilityLabel);
         
         if ([textField isEqual:self.emailTextField]) {
             [self.emailConfirmTextField setEnabled:YES];
@@ -166,7 +157,7 @@
         }
         if ([textField isEqual:self.emailConfirmTextField]) {
             [self.phoneTextField becomeFirstResponder];
-            }
+        }
         if ([textField isEqual:self.phoneTextField]) {
             [self.passwordTextField becomeFirstResponder];
         }
@@ -178,6 +169,20 @@
             
         }
     }
+    
+    if ([self allFieldsValid]) {
+        [self.submitButton setHidden:NO];
+        [self.submitButton setEnabled:YES];
+        [self submitButtonGrandEntranceAnimation];
+    }
+}
+
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField 
+{
+        ///one field at a time. if valid, unlock the next field. if tries to leave behind invalid input, pulse red (and prevent). if all are valid, cue the Submit button.
+    
+    
     return YES;
 }
 
