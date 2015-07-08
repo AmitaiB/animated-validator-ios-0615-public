@@ -70,52 +70,58 @@
 }
 
 -(BOOL)isValidInput:(UITextField *)textField {
-        /**
-         Email:  Should be a valid email
-         Email confirm: should be the same as Email
-         Phone: only digits or a +, at least 7 digits
-         Password: at least 6 characters
-    Password Confirm
-    should be the same as Password
-    */
-        //#1 good. #2 good. #3 good. #4 good. #5 good.
+    
     if ([textField.text length] < 1) {
         return NO;
     }
     
+        //         Email:  Should be a valid email
     if ([textField isEqual:self.emailTextField]) {
         return [self.emailTextField.text isEmail];
     }
     
+        //         Email confirm: should be the same as Email
     if ([textField isEqual:self.emailConfirmTextField]) {
         BOOL isTheSameEmail = [[self.emailConfirmTextField.text lowercaseString] isEqualToString:[self.emailTextField.text lowercaseString]];
         return isTheSameEmail;
     }
-    
+
+        //         Phone: only digits or a +, at least 7 digits
     if ([textField isEqual:self.phoneTextField]) {
-        
-            //Count the digits in the string.
+
+            //Count the digits in the string by iterating over it, checking each char.
         NSUInteger digitCount = 0;
         for (NSInteger i = 0; i < [self.phoneTextField.text length]; i++) {
             unichar myChar = [self.phoneTextField.text characterAtIndex:i];
-            if (myChar >= '0'  &&  myChar <= '9') {
-                digitCount++;
-            }
+            if ((myChar >= '0'  &&  myChar <= '9') || myChar == '+') {
+                if (myChar != '+') {
+                    digitCount++;
+                }
+            } else return NO;
         } 
+        return digitCount >= 7;
 
-        BOOL hasLessThan7digits = digitCount < 7;
         
-        NSCharacterSet *invalidCharacters = [[NSCharacterSet characterSetWithCharactersInString:@"+1234567890.-()"] invertedSet];
-        BOOL hasInvalidChars = !([self.phoneTextField.text rangeOfCharacterFromSet:invalidCharacters].location != NSNotFound);
+//        BOOL hasLessThan7digits = digitCount < 7;
         
-            //Phone #s are at least 7 digits, and only contain digits 
-        return (hasLessThan7digits || hasInvalidChars); 
+//        NSCharacterSet *invalidCharacters = [[NSCharacterSet characterSetWithCharactersInString:@"+1234567890.-()"] invertedSet];
+//        BOOL hasInvalidChars = !([self.phoneTextField.text rangeOfCharacterFromSet:invalidCharacters].location != NSNotFound);
+//        
+//        NSArray *logMe = @[@"digitCount", [@(digitCount) stringValue], @"hasLessThan7digits", hasLessThan7digits? @"YES": @"NO" ,@"hasInvalidChars", hasInvalidChars? @"YES":@"NO"];
+//        
+//        NSLog(@"%@", [logMe description]);
+//        
+//        
+//            //Phone #s are at least 7 digits, and only contain digits 
+//        return (!hasLessThan7digits && !hasInvalidChars); 
     }
     
+        //         Password: at least 6 characters
     if ([textField isEqual:self.passwordTextField]) {
-        return [self.passwordTextField.text length] < 6;
+        return [self.passwordTextField.text length] >= 7;
     }
     
+            //    Password Confirm:  should be the same as Password
     if ([textField isEqual:self.passwordConfirmTextField]) {
         BOOL isTheSamePassword = [self.passwordConfirmTextField.text isEqualToString:self.passwordTextField.text];
         return isTheSamePassword;
@@ -178,8 +184,8 @@
 }
 
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField 
-{
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.view endEditing:YES];    
         ///one field at a time. if valid, unlock the next field. if tries to leave behind invalid input, pulse red (and prevent). if all are valid, cue the Submit button.
     
     
