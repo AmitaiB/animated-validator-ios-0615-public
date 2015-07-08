@@ -60,7 +60,7 @@
     
 }
 
--(void)errorPulseFieldAnimation {
+-(BOOL)animatedNO:(UITextField *)textField {
     CABasicAnimation *errorPulse;
     
     errorPulse = [CABasicAnimation animationWithKeyPath:@"opacity"];
@@ -69,8 +69,9 @@
     errorPulse.autoreverses = YES;
     errorPulse.fromValue = [NSNumber numberWithFloat:1.0];
     errorPulse.toValue = [NSNumber numberWithFloat:0.0];
-    [self.view.layer addAnimation:errorPulse forKey:@"animateOpacity"];  
+    [textField.layer addAnimation:errorPulse forKey:@"animateOpacity"];  
     
+    return NO;
 }
 
 -(void)submitButtonGrandEntranceAnimation {
@@ -80,7 +81,7 @@
 -(BOOL)isValidInput:(UITextField *)textField {
     
     if ([textField.text length] < 1) {
-        return NO;
+        return [self animatedNO:textField];
     }
     
         //         Email:  Should be a valid email
@@ -105,7 +106,7 @@
                 if (myChar != '+') {
                     digitCount++;
                 }
-            } else return NO;
+            } else return [self animatedNO:textField];
         } 
         return digitCount >= 7;
 
