@@ -34,6 +34,8 @@
     self.passwordTextField.accessibilityLabel = PASSWORDTEXTFIELD;
     self.passwordConfirmTextField.accessibilityLabel = PASSWORDCONFIRMTEXTFIELD;
     
+    self.submitButton.hidden = YES;
+    
 }
 
 
