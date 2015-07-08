@@ -17,6 +17,7 @@
  */
 #import "NSString+Email.h"
 
+
 @interface ValidatorViewController ()<UITextFieldDelegate>
 
 @property (nonatomic, weak) IBOutlet UITextField *emailTextField;
@@ -116,6 +117,10 @@
     
     NSLog(@"Warning! No specific Textfield detected.");
     return YES;
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {

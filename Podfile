@@ -3,7 +3,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 target 'AnimatedValidatorTests' do
     pod 'NSString-Email' 
-    pod 'LTPhoneNumberField'
+    #    pod 'LTPhoneNumberField'
 
     
     pod 'Specta', :git => 'https://github.com/specta/specta.git'
