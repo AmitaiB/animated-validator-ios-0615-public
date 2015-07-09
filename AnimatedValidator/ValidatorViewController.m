@@ -6,16 +6,13 @@
 //
 
     //#import <QuartzCore/QuartzCore.h>
+
+    /// pod 'NSString+email' (caveat: uses an overly strict regex)
+    /// In real life, follow this advice:
+    /// http://davidcel.is/posts/stop-validating-email-addresses-with-regex/
+#import "NSString+Email.h"
 #import "ValidatorViewController.h"
 #import "Constants.h"
-
-/**
- pod 'NSString+email' (caveat: uses an overly strict regex)
- 
- In real life, follow this advice:
- http://davidcel.is/posts/stop-validating-email-addresses-with-regex/
- */
-#import "NSString+Email.h"
 
 
 @interface ValidatorViewController ()<UITextFieldDelegate>
@@ -28,7 +25,17 @@
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
 - (IBAction)submitButtonTapped:(id)sender;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *emailWidthConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *emailConfirmWidthConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *phoneWidthConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *passwordWidthConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *passwordConfirmWidthConstraint;
+
+
+
 @end
+
+
 
 @implementation ValidatorViewController
 
@@ -218,4 +225,5 @@
 - (IBAction)submitButtonTapped:(id)sender {
     NSLog(@"Submit button tapped!");
 }
+
 @end

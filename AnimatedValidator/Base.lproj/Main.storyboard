@@ -17,43 +17,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="confirm email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0gP-em-8QC">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="confirm email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0gP-em-8QC">
                                 <rect key="frame" x="20" y="81" width="280" height="30"/>
                                 <accessibility key="accessibilityConfiguration" label=""/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="Dbc-i7-v8u"/>
                                     <constraint firstAttribute="width" constant="280" id="MWf-xE-SAR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xwC-GM-0Ce">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xwC-GM-0Ce">
                                 <rect key="frame" x="20" y="119" width="280" height="30"/>
                                 <accessibility key="accessibilityConfiguration" label=""/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="F7X-jH-RuD"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="frG-S9-bYK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nSx-Ia-RI8">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nSx-Ia-RI8">
                                 <rect key="frame" x="20" y="157" width="280" height="30"/>
                                 <accessibility key="accessibilityConfiguration" label=""/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="6vY-vJ-Loz"/>
                                     <constraint firstAttribute="width" constant="280" id="Qg4-aK-mLp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="confirm password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CQ9-B1-hJs">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="confirm password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CQ9-B1-hJs">
                                 <rect key="frame" x="20" y="195" width="280" height="30"/>
                                 <accessibility key="accessibilityConfiguration" label=""/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="AB9-u5-dRr"/>
                                     <constraint firstAttribute="width" constant="280" id="E2D-vF-m3A"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHi-Rz-uKZ">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHi-Rz-uKZ">
                                 <rect key="frame" x="20" y="233" width="280" height="30"/>
                                 <accessibility key="accessibilityConfiguration" label="">
                                     <accessibilityTraits key="traits" none="YES" button="YES"/>
@@ -69,24 +73,44 @@
                                     <action selector="submitButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hyH-n6-izp"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nGp-cx-7Je">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nGp-cx-7Je">
                                 <rect key="frame" x="20" y="43" width="280" height="30"/>
                                 <accessibility key="accessibilityConfiguration" label=""/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="bFv-Me-s9F"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="d7v-9N-H3a"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xwC-GM-0Ce" firstAttribute="top" secondItem="0gP-em-8QC" secondAttribute="bottom" constant="8" symbolic="YES" id="7Jx-nA-KhA"/>
+                            <constraint firstItem="CQ9-B1-hJs" firstAttribute="leading" secondItem="jHi-Rz-uKZ" secondAttribute="leading" id="ERl-4S-N9R"/>
+                            <constraint firstItem="CQ9-B1-hJs" firstAttribute="top" secondItem="nSx-Ia-RI8" secondAttribute="bottom" constant="8" symbolic="YES" id="M6t-pI-a3k"/>
+                            <constraint firstItem="0gP-em-8QC" firstAttribute="leading" secondItem="xwC-GM-0Ce" secondAttribute="leading" id="N26-Re-r2l"/>
+                            <constraint firstItem="nSx-Ia-RI8" firstAttribute="leading" secondItem="CQ9-B1-hJs" secondAttribute="leading" id="Vpg-4X-INv"/>
+                            <constraint firstItem="nSx-Ia-RI8" firstAttribute="top" secondItem="xwC-GM-0Ce" secondAttribute="bottom" constant="8" symbolic="YES" id="ZJr-fw-lub"/>
+                            <constraint firstItem="xwC-GM-0Ce" firstAttribute="leading" secondItem="nSx-Ia-RI8" secondAttribute="leading" id="aZL-0p-fCp"/>
+                            <constraint firstItem="nGp-cx-7Je" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="23" id="ew2-rD-hbP"/>
+                            <constraint firstItem="0gP-em-8QC" firstAttribute="top" secondItem="nGp-cx-7Je" secondAttribute="bottom" constant="8" symbolic="YES" id="jLy-fT-7pa"/>
+                            <constraint firstItem="jHi-Rz-uKZ" firstAttribute="top" secondItem="CQ9-B1-hJs" secondAttribute="bottom" constant="8" symbolic="YES" id="sFN-S0-VQh"/>
+                            <constraint firstItem="nGp-cx-7Je" firstAttribute="leading" secondItem="0gP-em-8QC" secondAttribute="leading" id="w2R-by-tHH"/>
+                            <constraint firstItem="xwC-GM-0Ce" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="xq2-xn-x4V"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="emailConfirmTextField" destination="0gP-em-8QC" id="MPO-0Z-Ypn"/>
+                        <outlet property="emailConfirmWidthConstraint" destination="MWf-xE-SAR" id="ZTy-ZG-Nst"/>
                         <outlet property="emailTextField" destination="nGp-cx-7Je" id="co6-me-ILd"/>
+                        <outlet property="emailWidthConstraint" destination="bFv-Me-s9F" id="cOO-yx-uSV"/>
                         <outlet property="passwordConfirmTextField" destination="CQ9-B1-hJs" id="Qzh-jM-6Uz"/>
+                        <outlet property="passwordConfirmWidthConstraint" destination="E2D-vF-m3A" id="wBo-g9-tZT"/>
                         <outlet property="passwordTextField" destination="nSx-Ia-RI8" id="T7D-4f-e9B"/>
+                        <outlet property="passwordWidthConstraint" destination="Qg4-aK-mLp" id="DKo-UF-Eny"/>
                         <outlet property="phoneTextField" destination="xwC-GM-0Ce" id="lhS-VS-sX8"/>
+                        <outlet property="phoneWidthConstraint" destination="F7X-jH-RuD" id="hWX-ai-S7q"/>
                         <outlet property="submitButton" destination="jHi-Rz-uKZ" id="4ng-do-283"/>
                     </connections>
                 </viewController>
