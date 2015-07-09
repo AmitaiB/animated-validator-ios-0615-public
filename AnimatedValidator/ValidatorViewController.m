@@ -43,7 +43,7 @@
     self.phoneTextField.accessibilityLabel = PHONETEXTFIELD;
     self.passwordTextField.accessibilityLabel = PASSWORDTEXTFIELD;
     self.passwordConfirmTextField.accessibilityLabel = PASSWORDCONFIRMTEXTFIELD;
-      
+    
         ///Submit button appears when all are valid entries.
     self.submitButton.hidden = YES;
     [self assignDelegates];
@@ -61,16 +61,26 @@
 }
 
 -(BOOL)animatedNO:(UITextField *)textField {
-    CABasicAnimation *errorPulse;
+//    CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+//    pulseAnimation.duration = .25;
+//    pulseAnimation.toValue = @1.1;
+//    pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//    pulseAnimation.autoreverses = YES;
+//    pulseAnimation.repeatCount = FLT_MAX;
     
-    errorPulse = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    errorPulse.duration = .25;
-    errorPulse.repeatCount = HUGE_VALF;
-    errorPulse.autoreverses = YES;
-    errorPulse.fromValue = [NSNumber numberWithFloat:1.0];
-    errorPulse.toValue = [NSNumber numberWithFloat:0.0];
-    [textField.layer addAnimation:errorPulse forKey:@"animateOpacity"];  
+    [UIView animateWithDuration:1.325 animations:^{
+        
+    }];
+//        textField.backgroundColor = [UIColor redColor];
+//    }];
+//    [UIView animateWithDuration:.325 animations:^{
+//        textField.backgroundColor = [UIColor whiteColor];
+//    }];
+//    
+//    NSLog(@"Animating %@", textField.text);
+
     
+    [self.view layoutIfNeeded];
     return NO;
 }
 
@@ -81,7 +91,7 @@
 -(BOOL)isValidInput:(UITextField *)textField {
     
     if ([textField.text length] < 1) {
-        return [self animatedNO:textField];
+        return NO;
     }
     
         //         Email:  Should be a valid email
@@ -106,7 +116,11 @@
                 if (myChar != '+') {
                     digitCount++;
                 }
-            } else return [self animatedNO:textField];
+            } else {
+                NSLog(@"%@ is NOT valid!", textField.text);
+                [self animatedNO:textField];
+                return NO;
+            }
         } 
         return digitCount >= 7;
 
