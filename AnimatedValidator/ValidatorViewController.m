@@ -54,9 +54,8 @@
     self.passwordConfirmTextField.accessibilityLabel = PASSWORDCONFIRMTEXTFIELD;
     
         ///Submit button will appear only when all are valid entries.
-    self.submitButtonTopConstraint.constant = 500;
     [self assignDelegates];
-    
+    [self submitButtonGrandEntranceAnimation];
 }
 
 
@@ -76,7 +75,10 @@
 }
 
 -(void)submitButtonGrandEntranceAnimation {
-    self.submitButtonTopConstraint.constant = 8;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.submitButtonTopConstraint.constant = 12;
+        [self.view layoutIfNeeded];
+    }];
 }
 
 -(BOOL)isValidInput:(UITextField *)textField {
