@@ -22,7 +22,7 @@
 @property (nonatomic, weak) IBOutlet UITextField *phoneTextField;
 @property (nonatomic, weak) IBOutlet UITextField *passwordTextField;
 @property (nonatomic, weak) IBOutlet UITextField *passwordConfirmTextField;
-@property (weak, nonatomic) IBOutlet UIButton *submitButton;
+@property (weak, nonatomic) IBOutlet UIButton    *submitButton;
 - (IBAction)submitButtonTapped:(id)sender;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *emailWidthConstraint;
@@ -44,11 +44,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.submitButton.accessibilityLabel = SUBMITBUTTON;
-    self.emailTextField.accessibilityLabel = EMAILTEXTFIELD;
-    self.emailConfirmTextField.accessibilityLabel = EMAILCONFIRMTEXTFIELD;
-    self.phoneTextField.accessibilityLabel = PHONETEXTFIELD;
-    self.passwordTextField.accessibilityLabel = PASSWORDTEXTFIELD;
+    self.submitButton.accessibilityLabel             = SUBMITBUTTON;
+    self.emailTextField.accessibilityLabel           = EMAILTEXTFIELD;
+    self.emailConfirmTextField.accessibilityLabel    = EMAILCONFIRMTEXTFIELD;
+    self.phoneTextField.accessibilityLabel           = PHONETEXTFIELD;
+    self.passwordTextField.accessibilityLabel        = PASSWORDTEXTFIELD;
     self.passwordConfirmTextField.accessibilityLabel = PASSWORDCONFIRMTEXTFIELD;
     
         ///Submit button appears when all are valid entries.
@@ -59,34 +59,16 @@
 
 
 -(void)assignDelegates {
-    self.emailTextField.delegate = self;
-    self.emailConfirmTextField.delegate = self;
-    self.phoneTextField.delegate = self;
-    self.passwordTextField.delegate = self;
+    self.emailTextField.delegate           = self;
+    self.emailConfirmTextField.delegate    = self;
+    self.phoneTextField.delegate           = self;
+    self.passwordTextField.delegate        = self;
     self.passwordConfirmTextField.delegate = self;
     
 }
 
--(BOOL)animatedNO:(UITextField *)textField {
-//    CABasicAnimation *pulseAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-//    pulseAnimation.duration = .25;
-//    pulseAnimation.toValue = @1.1;
-//    pulseAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-//    pulseAnimation.autoreverses = YES;
-//    pulseAnimation.repeatCount = FLT_MAX;
-    
-    [UIView animateWithDuration:1.325 animations:^{
+-(BOOL)animatedNO:(NSArray *)constraints {
         
-    }];
-//        textField.backgroundColor = [UIColor redColor];
-//    }];
-//    [UIView animateWithDuration:.325 animations:^{
-//        textField.backgroundColor = [UIColor whiteColor];
-//    }];
-//    
-//    NSLog(@"Animating %@", textField.text);
-
-    
     [self.view layoutIfNeeded];
     return NO;
 }
@@ -96,56 +78,60 @@
 }
 
 -(BOOL)isValidInput:(UITextField *)textField {
-    
-    if ([textField.text length] < 1) {
-        return NO;
-    }
+    if ([textField.text length] < 1)
+        {return NO;}
     
         //         Email:  Should be a valid email
-    if ([textField isEqual:self.emailTextField]) {
-        return [self.emailTextField.text isEmail];
-    }
+    if ([textField isEqual:self.emailTextField])
+        {return [self.emailTextField.text isEmail];}
     
         //         Email confirm: should be the same as Email
     if ([textField isEqual:self.emailConfirmTextField]) {
-        BOOL isTheSameEmail = [[self.emailConfirmTextField.text lowercaseString] isEqualToString:[self.emailTextField.text lowercaseString]];
-        return isTheSameEmail;
+        BOOL isTheSameEmailAddress = [[self.emailConfirmTextField.text lowercaseString] isEqualToString:[self.emailTextField.text lowercaseString]];
+        return isTheSameEmailAddress;
     }
 
-        //         Phone: only digits or a +, at least 7 digits
+        
     if ([textField isEqual:self.phoneTextField]) {
 
-            //Count the digits in the string by iterating over it, checking each char.
-        NSUInteger digitCount = 0;
-        for (NSInteger i = 0; i < [self.phoneTextField.text length]; i++) {
-            unichar myChar = [self.phoneTextField.text characterAtIndex:i];
-            if ((myChar >= '0'  &&  myChar <= '9') || myChar == '+') {
-                if (myChar != '+') {
-                    digitCount++;
-                }
-            } else {
-                NSLog(@"%@ is NOT valid!", textField.text);
-                [self animatedNO:textField];
-                return NO;
-            }
-        } 
-        return digitCount >= 7;
-
+            ///I used a regular expression, and then solved [both of]
+            ///the problem[s].
+        NSError *error = NULL;
         
-//        BOOL hasLessThan7digits = digitCount < 7;
+            //RegEx: may have a +prefix, may have an area code, may format with
+            //various metachars. Cannot have a 0 or 1 to start area code or
+            //#. Must be 7 (or 10) digits. ObjC 2x '\' escape chars.
+        NSString *regexPattern = @"(\\+1)?((\\([2-9]\\d{2}\\))|([2-9]\\d{2}))[. -]?([2-9]\\d{2})[. -]?\\d{4}"; 
+        NSRegularExpression *phoneRegex = [NSRegularExpression regularExpressionWithPattern:regexPattern
+                                                                                    options:NSRegularExpressionIgnoreMetacharacters
+                                                                                      error:&error];
         
-//        NSCharacterSet *invalidCharacters = [[NSCharacterSet characterSetWithCharactersInString:@"+1234567890.-()"] invertedSet];
-//        BOOL hasInvalidChars = !([self.phoneTextField.text rangeOfCharacterFromSet:invalidCharacters].location != NSNotFound);
-//        
-//        NSArray *logMe = @[@"digitCount", [@(digitCount) stringValue], @"hasLessThan7digits", hasLessThan7digits? @"YES": @"NO" ,@"hasInvalidChars", hasInvalidChars? @"YES":@"NO"];
-//        
-//        NSLog(@"%@", [logMe description]);
-//        
-//        
-//            //Phone #s are at least 7 digits, and only contain digits 
-//        return (!hasLessThan7digits && !hasInvalidChars); 
+        NSUInteger numberOfMatches = [phoneRegex numberOfMatchesInString:textField.text 
+                                                                 options:0
+                                                                   range:NSMakeRange(0, [textField.text length])];
+            
+        return numberOfMatches == 1;
     }
-    
+            
+//Regex replaces this ugliness:
+//      ********************
+//        NSUInteger digitCount = 0;
+//        for (NSInteger i = 0; i < [self.phoneTextField.text length]; i++) {
+//            unichar myChar = [self.phoneTextField.text characterAtIndex:i];
+//            if ((myChar >= '0'  &&  myChar <= '9') || myChar == '+') {
+//                if (myChar != '+') {
+//                    digitCount++;
+//                }
+//            } else {
+//                NSLog(@"%@ is NOT valid!", textField.text);
+//                
+//                return;
+//            }
+//        } 
+//        return digitCount >= 7;
+//        ****************
+
+            
         //         Password: at least 6 characters
     if ([textField isEqual:self.passwordTextField]) {
         return [self.passwordTextField.text length] >= 7;
@@ -154,6 +140,7 @@
             //    Password Confirm:  should be the same as Password
     if ([textField isEqual:self.passwordConfirmTextField]) {
         BOOL isTheSamePassword = [self.passwordConfirmTextField.text isEqualToString:self.passwordTextField.text];
+        
         return isTheSamePassword;
     }
     
@@ -162,12 +149,17 @@
 }
 
 -(BOOL)allFieldsValid {
-    return (   [self isValidInput:self.emailTextField] 
-            && [self isValidInput:self.emailConfirmTextField]
-            && [self isValidInput:self.phoneTextField]
-            && [self isValidInput:self.passwordTextField]
-            && [self isValidInput:self.passwordConfirmTextField]
-            );
+    BOOL allFieldsAreValid = ([self isValidInput:self.emailTextField]
+                            && [self isValidInput:self.emailConfirmTextField]
+                            && [self isValidInput:self.phoneTextField]
+                            && [self isValidInput:self.passwordTextField]
+                            && [self isValidInput:self.passwordConfirmTextField]
+                              );
+    if (allFieldsAreValid) {
+        [self.submitButton setEnabled:YES]
+        [self submitButtonGrandEntranceAnimation];
+    }
+    return allFieldsAreValid;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
