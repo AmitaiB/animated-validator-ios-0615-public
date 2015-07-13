@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		387D8B391B53EFA4006EF270 /* RegExCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 387D8B381B53EFA4006EF270 /* RegExCategories.m */; };
 		38BBA8D11B4D6FDC00BD00C8 /* libPods-AnimatedValidatorTests-NSString-Email.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38BBA8D01B4D6FDC00BD00C8 /* libPods-AnimatedValidatorTests-NSString-Email.a */; };
 		38BBA8D41B4D71BC00BD00C8 /* NSString+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = 38BBA8D31B4D71BC00BD00C8 /* NSString+Email.m */; };
 		446B443B1964AADC00047086 /* ValidatorViewControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 446B443A1964AADC00047086 /* ValidatorViewControllerSpec.m */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		387D8B371B53EFA4006EF270 /* RegExCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegExCategories.h; sourceTree = "<group>"; };
+		387D8B381B53EFA4006EF270 /* RegExCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExCategories.m; sourceTree = "<group>"; };
 		38BBA8D01B4D6FDC00BD00C8 /* libPods-AnimatedValidatorTests-NSString-Email.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AnimatedValidatorTests-NSString-Email.a"; path = "Pods/../build/Debug-iphoneos/libPods-AnimatedValidatorTests-NSString-Email.a"; sourceTree = "<group>"; };
 		38BBA8D21B4D71BC00BD00C8 /* NSString+Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Email.h"; sourceTree = "<group>"; };
 		38BBA8D31B4D71BC00BD00C8 /* NSString+Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Email.m"; sourceTree = "<group>"; };
@@ -137,6 +140,8 @@
 				44CD1C1D19215BE800140BD0 /* Images.xcassets */,
 				38BBA8D21B4D71BC00BD00C8 /* NSString+Email.h */,
 				38BBA8D31B4D71BC00BD00C8 /* NSString+Email.m */,
+				387D8B371B53EFA4006EF270 /* RegExCategories.h */,
+				387D8B381B53EFA4006EF270 /* RegExCategories.m */,
 				44CD1C0C19215BE800140BD0 /* Supporting Files */,
 				44CD1C3D19215E3B00140BD0 /* Constants.h */,
 				44CD1C3E19215E3B00140BD0 /* Constants.m */,
@@ -315,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44CD1C1619215BE800140BD0 /* AppDelegate.m in Sources */,
+				387D8B391B53EFA4006EF270 /* RegExCategories.m in Sources */,
 				44CD1C3C19215D0A00140BD0 /* ValidatorViewController.m in Sources */,
 				44CD1C1219215BE800140BD0 /* main.m in Sources */,
 				38BBA8D41B4D71BC00BD00C8 /* NSString+Email.m in Sources */,

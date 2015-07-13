@@ -13,6 +13,7 @@
 #import "NSString+Email.h"
 #import "ValidatorViewController.h"
 #import "Constants.h"
+#import "RegExCategories.h"
 
 
 @interface ValidatorViewController ()<UITextFieldDelegate>
@@ -104,16 +105,18 @@
             //various metachars. Cannot have a 0 or 1 to start area code or
             //#. Must be 7 (or 10) digits. ObjC 2x '\' escape chars.
 //        NSString *regexPattern = @"(\+1)?((\([2-9]\d{2}\))|([2-9]\d{2}))[. -]?([2-9]\d{2})[. -]?\d{4}"; 
-        NSString *regexPattern = @"(\+?\d?)\(?[2-9]\d\d[\)\. -]?[2-9]\d{2}[\. -]?\d{4,}";
-        NSRegularExpression *phoneRegex = [NSRegularExpression regularExpressionWithPattern:regexPattern
-                                                                                    options:NSRegularExpressionIgnoreMetacharacters
-                                                                                      error:&error];
-        
-        NSUInteger numberOfMatches = [phoneRegex numberOfMatchesInString:textField.text 
-                                                                 options:0
-                                                                   range:NSMakeRange(0, [textField.text length])];
-        NSLog(@"Inside %@ validation check. %@ %@ valid.", textField.text, textField.text, (numberOfMatches == 1)? @"is" : @"is NOT");
-        return !(numberOfMatches != 1);
+        Rx *phoneNumberRX = RX(@"(\\+?\\d?)\\(?[2-9]\\d\\d[\\)\\. -]?[2-9]\\d{2}[\\. -]?\\d{4,}");
+//        NSString *regexPattern = @"(\+?\d?)\(?[2-9]\d\d[\)\. -]?[2-9]\d{2}[\. -]?\d{4,}";
+//        NSRegularExpression *phoneRegex = [NSRegularExpression regularExpressionWithPattern:regexPattern
+//                                                                                    options:NSRegularExpressionIgnoreMetacharacters
+//                                                                                      error:&error];
+//        
+//        NSUInteger numberOfMatches = [phoneRegex numberOfMatchesInString:textField.text 
+//                                                                 options:0
+//                                                                   range:NSMakeRange(0, [textField.text length])];
+        BOOL isValidPhoneNumber = [phoneNumberRX isMatch:textField.text];
+        NSLog(@"Inside %@ validation check. %@ %@ valid.", textField.text, textField.text, (isValidPhoneNumber)? @"is" : @"is NOT");
+        return (isValidPhoneNumber);
     }
             
 //Regex replaces this ugliness:
