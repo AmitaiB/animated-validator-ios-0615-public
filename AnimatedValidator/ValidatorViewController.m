@@ -235,18 +235,20 @@
 
         [self.view layoutIfNeeded];
         
-        [UIView animateWithDuration:.125
+        [UIView animateWithDuration:.1
                          animations:^{
                              widthConstraint.constant += 30;
                              textField.backgroundColor = [UIColor redColor];
+                             textField.alpha = .75;
                              [self.view layoutIfNeeded];
                          }
                          completion:^(BOOL finished) {
-                             [UIView animateWithDuration:.125
+                             [UIView animateWithDuration:.1
                                               animations:^{
                                                   widthConstraint.constant -= 30;
                                                   textField.backgroundColor = [UIColor whiteColor];
                                                   [self.view layoutIfNeeded];
+                                                  textField.alpha = 1;
                                               }];
                          }
          ];

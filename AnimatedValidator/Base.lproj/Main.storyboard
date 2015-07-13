@@ -82,16 +82,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xwC-GM-0Ce" firstAttribute="top" secondItem="0gP-em-8QC" secondAttribute="bottom" constant="8" symbolic="YES" id="7Jx-nA-KhA"/>
+                            <constraint firstAttribute="centerX" secondItem="xwC-GM-0Ce" secondAttribute="centerX" id="7h0-0C-mV3"/>
+                            <constraint firstAttribute="centerX" secondItem="nGp-cx-7Je" secondAttribute="centerX" id="8iN-s8-cWD"/>
                             <constraint firstItem="jHi-Rz-uKZ" firstAttribute="top" secondItem="CQ9-B1-hJs" secondAttribute="bottom" constant="500" id="CRQ-pH-32s"/>
-                            <constraint firstItem="CQ9-B1-hJs" firstAttribute="leading" secondItem="jHi-Rz-uKZ" secondAttribute="leading" id="ERl-4S-N9R"/>
                             <constraint firstItem="CQ9-B1-hJs" firstAttribute="top" secondItem="nSx-Ia-RI8" secondAttribute="bottom" constant="8" symbolic="YES" id="M6t-pI-a3k"/>
-                            <constraint firstItem="0gP-em-8QC" firstAttribute="leading" secondItem="xwC-GM-0Ce" secondAttribute="leading" id="N26-Re-r2l"/>
-                            <constraint firstItem="nSx-Ia-RI8" firstAttribute="leading" secondItem="CQ9-B1-hJs" secondAttribute="leading" id="Vpg-4X-INv"/>
+                            <constraint firstAttribute="centerX" secondItem="0gP-em-8QC" secondAttribute="centerX" id="XxG-hu-kDZ"/>
                             <constraint firstItem="nSx-Ia-RI8" firstAttribute="top" secondItem="xwC-GM-0Ce" secondAttribute="bottom" constant="8" symbolic="YES" id="ZJr-fw-lub"/>
-                            <constraint firstItem="xwC-GM-0Ce" firstAttribute="leading" secondItem="nSx-Ia-RI8" secondAttribute="leading" id="aZL-0p-fCp"/>
                             <constraint firstItem="nGp-cx-7Je" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="23" id="ew2-rD-hbP"/>
+                            <constraint firstAttribute="centerX" secondItem="CQ9-B1-hJs" secondAttribute="centerX" id="f5c-jx-X6B"/>
                             <constraint firstItem="0gP-em-8QC" firstAttribute="top" secondItem="nGp-cx-7Je" secondAttribute="bottom" constant="8" symbolic="YES" id="jLy-fT-7pa"/>
-                            <constraint firstItem="nGp-cx-7Je" firstAttribute="leading" secondItem="0gP-em-8QC" secondAttribute="leading" id="w2R-by-tHH"/>
+                            <constraint firstAttribute="centerX" secondItem="jHi-Rz-uKZ" secondAttribute="centerX" id="lCz-FA-bXg"/>
+                            <constraint firstAttribute="centerX" secondItem="nSx-Ia-RI8" secondAttribute="centerX" id="wAa-fg-b6d"/>
                             <constraint firstItem="xwC-GM-0Ce" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="xq2-xn-x4V"/>
                         </constraints>
                     </view>
