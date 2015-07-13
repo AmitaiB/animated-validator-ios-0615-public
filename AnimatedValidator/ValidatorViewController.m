@@ -35,6 +35,7 @@
 
 
 
+
 @end
 
 
@@ -55,7 +56,8 @@
     
         ///Submit button will appear only when all are valid entries.
     [self assignDelegates];
-    [self submitButtonGrandEntranceAnimation];
+        //Testing purposes only ↓
+        //    [self submitButtonGrandEntranceAnimation];
 }
 
 
@@ -75,6 +77,7 @@
 }
 
 -(void)submitButtonGrandEntranceAnimation {
+    [self.submitButton setEnabled:YES];
     [UIView animateWithDuration:0.5 animations:^{
         self.submitButtonTopConstraint.constant = 12;
         [self.view layoutIfNeeded];
@@ -103,12 +106,14 @@
             ///the problem[s].
         NSError *error = NULL;
         
-            //RegEx: may have a +prefix, may have an area code, may format with
-            //various metachars. Cannot have a 0 or 1 to start area code or
-            //#. Must be 7 (or 10) digits. ObjC 2x '\' escape chars.
-//        NSString *regexPattern = @"(\+1)?((\([2-9]\d{2}\))|([2-9]\d{2}))[. -]?([2-9]\d{2})[. -]?\d{4}"; 
+            ///RegEx: may have a +prefix, may have an area code, may format with
+            ///various metachars. Cannot have a 0 or 1 to start area code or
+            ///#. Must be 7 (or 10) digits. ObjC 2x '\' escape chars.
         Rx *phoneNumberRX = RX(@"(\\+?\\d?)\\(?[2-9]\\d\\d[\\)\\. -]?[2-9]\\d{2}[\\. -]?\\d{4,}");
-//        NSString *regexPattern = @"(\+?\d?)\(?[2-9]\d\d[\)\. -]?[2-9]\d{2}[\. -]?\d{4,}";
+//Failed Regex pattern:
+{
+//        NSString *regexPattern =
+//        @"(\+?\d?)\(?[2-9]\d\d[\)\. -]?[2-9]\d{2}[\. -]?\d{4,}";
 //        NSRegularExpression *phoneRegex = [NSRegularExpression regularExpressionWithPattern:regexPattern
 //                                                                                    options:NSRegularExpressionIgnoreMetacharacters
 //                                                                                      error:&error];
@@ -116,13 +121,14 @@
 //        NSUInteger numberOfMatches = [phoneRegex numberOfMatchesInString:textField.text 
 //                                                                 options:0
 //                                                                   range:NSMakeRange(0, [textField.text length])];
+    }
         BOOL isValidPhoneNumber = [phoneNumberRX isMatch:textField.text];
         NSLog(@"Inside %@ validation check. %@ %@ valid.", textField.text, textField.text, (isValidPhoneNumber)? @"is" : @"is NOT");
         return (isValidPhoneNumber);
     }
             
 //Regex replaces this ugliness:
-//      ********************
+{//      ********************
 //        NSUInteger digitCount = 0;
 //        for (NSInteger i = 0; i < [self.phoneTextField.text length]; i++) {
 //            unichar myChar = [self.phoneTextField.text characterAtIndex:i];
@@ -138,6 +144,7 @@
 //        } 
 //        return digitCount >= 7;
 //        ****************
+}
 
             
         //         Password: at least 6 characters
@@ -175,6 +182,8 @@
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {
+//Pseudo-Code:
+{
 //    if ([textField isEqual:self.phoneTextField]) {
 //            //good things happen
 //        if ([self isValidInput:textField]) {
@@ -183,6 +192,7 @@
 //    } else {
 //            //get angry
 //    }
+    }
     if ([self isValidInput:textField]) {
         
         NSLog(@"%@ is valid!", textField.accessibilityLabel);
@@ -204,6 +214,42 @@
         if ([textField isEqual:self.passwordConfirmTextField]) {
             
         }
+    } else {
+        NSLayoutConstraint *widthConstraint;
+
+        if ([textField isEqual:self.emailTextField]) {
+            widthConstraint = self.emailWidthConstraint;
+        }
+        if ([textField isEqual:self.emailConfirmTextField]) {
+            widthConstraint = self.emailConfirmWidthConstraint;
+        }
+        if ([textField isEqual:self.phoneTextField]) {
+            widthConstraint = self.phoneWidthConstraint;
+        }
+        if ([textField isEqual:self.passwordTextField]) {
+            widthConstraint = self.passwordWidthConstraint;
+        }
+        if ([textField isEqual:self.passwordConfirmTextField]) {
+            widthConstraint = self.passwordConfirmWidthConstraint;
+        }
+
+        [self.view layoutIfNeeded];
+        
+        [UIView animateWithDuration:.125
+                         animations:^{
+                             widthConstraint.constant += 30;
+                             textField.backgroundColor = [UIColor redColor];
+                             [self.view layoutIfNeeded];
+                         }
+                         completion:^(BOOL finished) {
+                             [UIView animateWithDuration:.125
+                                              animations:^{
+                                                  widthConstraint.constant -= 30;
+                                                  textField.backgroundColor = [UIColor whiteColor];
+                                                  [self.view layoutIfNeeded];
+                                              }];
+                         }
+         ];
     }
     
     if ([self allFieldsValid]) {
