@@ -57,6 +57,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nGp-cx-7Je">
+                                <rect key="frame" x="20" y="43" width="280" height="30"/>
+                                <accessibility key="accessibilityConfiguration" label=""/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="bFv-Me-s9F"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="d7v-9N-H3a"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
                             <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHi-Rz-uKZ">
                                 <rect key="frame" x="20" y="233" width="280" height="30"/>
                                 <accessibility key="accessibilityConfiguration" label="">
@@ -73,16 +83,6 @@
                                     <action selector="submitButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hyH-n6-izp"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nGp-cx-7Je">
-                                <rect key="frame" x="20" y="43" width="280" height="30"/>
-                                <accessibility key="accessibilityConfiguration" label=""/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="280" id="bFv-Me-s9F"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="d7v-9N-H3a"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -112,6 +112,7 @@
                         <outlet property="phoneTextField" destination="xwC-GM-0Ce" id="lhS-VS-sX8"/>
                         <outlet property="phoneWidthConstraint" destination="F7X-jH-RuD" id="hWX-ai-S7q"/>
                         <outlet property="submitButton" destination="jHi-Rz-uKZ" id="4ng-do-283"/>
+                        <outlet property="submitButtonTopConstraint" destination="sFN-S0-VQh" id="B9t-21-r7Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

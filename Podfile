@@ -4,6 +4,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 target 'AnimatedValidatorTests' do
     pod 'NSString-Email' 
     #    pod 'LTPhoneNumberField'
+    pod 'RegExCategories', '~> 1.0'
 
     
     pod 'Specta', :git => 'https://github.com/specta/specta.git'

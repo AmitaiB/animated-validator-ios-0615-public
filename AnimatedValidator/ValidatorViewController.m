@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *phoneWidthConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *passwordWidthConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *passwordConfirmWidthConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *submitButtonTopConstraint;
 
 
 
@@ -51,8 +52,8 @@
     self.passwordTextField.accessibilityLabel        = PASSWORDTEXTFIELD;
     self.passwordConfirmTextField.accessibilityLabel = PASSWORDCONFIRMTEXTFIELD;
     
-        ///Submit button appears when all are valid entries.
-    self.submitButton.hidden = YES;
+        ///Submit button will appear only when all are valid entries.
+    self.submitButtonTopConstraint.constant = 500;
     [self assignDelegates];
     
 }
@@ -74,7 +75,7 @@
 }
 
 -(void)submitButtonGrandEntranceAnimation {
-    
+    self.submitButtonTopConstraint.constant = 8;
 }
 
 -(BOOL)isValidInput:(UITextField *)textField {
@@ -88,6 +89,7 @@
         //         Email confirm: should be the same as Email
     if ([textField isEqual:self.emailConfirmTextField]) {
         BOOL isTheSameEmailAddress = [[self.emailConfirmTextField.text lowercaseString] isEqualToString:[self.emailTextField.text lowercaseString]];
+                NSLog(@"Inside %@ validation check. %@ %@ valid.", textField.text, textField.text, (isTheSameEmailAddress)? @"is" : @"is NOT");
         return isTheSameEmailAddress;
     }
 
@@ -101,7 +103,8 @@
             //RegEx: may have a +prefix, may have an area code, may format with
             //various metachars. Cannot have a 0 or 1 to start area code or
             //#. Must be 7 (or 10) digits. ObjC 2x '\' escape chars.
-        NSString *regexPattern = @"(\\+1)?((\\([2-9]\\d{2}\\))|([2-9]\\d{2}))[. -]?([2-9]\\d{2})[. -]?\\d{4}"; 
+//        NSString *regexPattern = @"(\+1)?((\([2-9]\d{2}\))|([2-9]\d{2}))[. -]?([2-9]\d{2})[. -]?\d{4}"; 
+        NSString *regexPattern = @"(\+?\d?)\(?[2-9]\d\d[\)\. -]?[2-9]\d{2}[\. -]?\d{4,}";
         NSRegularExpression *phoneRegex = [NSRegularExpression regularExpressionWithPattern:regexPattern
                                                                                     options:NSRegularExpressionIgnoreMetacharacters
                                                                                       error:&error];
@@ -109,8 +112,8 @@
         NSUInteger numberOfMatches = [phoneRegex numberOfMatchesInString:textField.text 
                                                                  options:0
                                                                    range:NSMakeRange(0, [textField.text length])];
-            
-        return numberOfMatches == 1;
+        NSLog(@"Inside %@ validation check. %@ %@ valid.", textField.text, textField.text, (numberOfMatches == 1)? @"is" : @"is NOT");
+        return !(numberOfMatches != 1);
     }
             
 //Regex replaces this ugliness:
@@ -156,7 +159,7 @@
                             && [self isValidInput:self.passwordConfirmTextField]
                               );
     if (allFieldsAreValid) {
-        [self.submitButton setEnabled:YES]
+        [self.submitButton setEnabled:YES];
         [self submitButtonGrandEntranceAnimation];
     }
     return allFieldsAreValid;
@@ -199,9 +202,9 @@
     }
     
     if ([self allFieldsValid]) {
-        [self.submitButton setHidden:NO];
         [self.submitButton setEnabled:YES];
         [self submitButtonGrandEntranceAnimation];
+        NSLog(@"All fields are valid. Cue the submit button!");
     }
 }
 

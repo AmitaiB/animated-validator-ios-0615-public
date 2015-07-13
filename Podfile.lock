@@ -7,6 +7,7 @@ PODS:
   - OCHamcrest (4.1.1)
   - OCMockito (1.4.0):
     - OCHamcrest (~> 4.0)
+  - RegExCategories (1.0)
   - Specta (1.0.2)
 
 DEPENDENCIES:
@@ -14,6 +15,7 @@ DEPENDENCIES:
   - KIF (~> 3.0)
   - NSString-Email
   - OCMockito (~> 1.0)
+  - RegExCategories (~> 1.0)
   - Specta (from `https://github.com/specta/specta.git`)
 
 EXTERNAL SOURCES:
@@ -31,6 +33,7 @@ SPEC CHECKSUMS:
   NSString-Email: 3c1ff0ace64d7ecc289ea2a5696170c853012252
   OCHamcrest: 6f03ffa81d12feab872638490a44ab0a6d3aca10
   OCMockito: 4981140c9a9ec06c31af40f636e3c0f25f27e6b2
+  RegExCategories: e68befacacd5bda853c88f70ec745cb2d0cfb89c
   Specta: 9cec98310dca411f7c7ffd6943552b501622abfe
 
 COCOAPODS: 0.37.2
